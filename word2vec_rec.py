@@ -43,8 +43,8 @@ def get_recommendations(N, scores):
         recommendation.at[count, "ingredients"] = ingredient_parser_final(
             df_recipes["ingredients"][i]
         )
-        recommendation.at[count, "url"] = df_recipes["recipe_urls"][i]
-        recommendation.at[count, "score"] = f"{scores[i]}"
+        score_val = float(np.asarray(scores[i]).squeeze())
+        recommendation.at[count, "score"] = f"{score_val:.3f}"
         count += 1
     return recommendation
 
